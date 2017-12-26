@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+
+  "name": "Analytics Page",
+  "description": "Analytics Page.",
+  "version": "0.0.1",
+  "background": {
+    "persistent": true,
+    "scripts": ["js/background.js"]
+  },
+  "browser_action": {
+    "default_icon": "img/ico/50x50.png"
+  },
+  "content_scripts" : [{
+    "matches" : ["http://*/*", "https://*/*"],
+    "js" : ["js/monitor.js"]
+  }],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "identity",
+    "identity.email",
+    "background",
+    "webRequest",
+    "http://*/*",
+    "https://*/*"
+  ]
+}
