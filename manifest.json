@@ -6,7 +6,19 @@
   "version": "0.0.1",
   "background": {
     "persistent": true,
-    "scripts": ["js/background.js"]
+    "scripts": [
+
+      "js/libs/firebase.js",
+      "js/libs/lodash.min.js",
+      "js/libs/moment.js",
+      "js/libs/dexie.js",
+
+      "js/Track/Tab.js",
+      "js/PersisteData.js",
+      "js/MonitorTabs.js",
+
+      "js/background.js"
+    ]
   },
   "browser_action": {
     "default_icon": "img/ico/50x50.png"
