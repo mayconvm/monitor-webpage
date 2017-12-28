@@ -21,7 +21,7 @@ firebase.initializeApp(config);
 const monitor = new MonitorTabs(true, new PersisteData());
 
 // backup in IndexDb
-setTimeout(function __backupTackers() {
+setInterval(function __backupTackers() {
 
   monitor.persisteData();
 

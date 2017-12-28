@@ -11,7 +11,9 @@ class MonitorTabs {
 
     this.start = start;
 
-    if (!this.start) {
+    this.lastTab = null;
+
+    if (this.start) {
       this.startListen();
     }
   }
@@ -27,9 +29,9 @@ class MonitorTabs {
 
     chrome.tabs.onUpdated.addListener(function __ListenUpdated(tabId, objChange, objTab) {
 
-      that.removeTab(tabId);
+      console.log(that.FLAG, tabId, objChange, objTab);
 
-      that.addTab(objTab);
+      that.updateTab(tabId, objChange, objTab);
     });
 
     // - focus
@@ -50,11 +52,41 @@ class MonitorTabs {
   }
 
   removeTab(tabId) {
+    if (!(tabId in this.listTabs)) {
+      return;
+    }
+
     delete this.listTabs[tabId];
   }
 
   focusTab(tabId) {
+    if (!(tabId in this.listTabs)) {
+      return;
+    }
+
+    if (this.lastTab && this.lastTab in this.listTabs) {
+      this.listTabs[this.lastTab].focus(false);
+    }
+
     this.listTabs[tabId].focus();
+
+    this.lastTab = tabId;
+  }
+
+  updateTab(tabId, objChange, objTab) {
+    if (!(tabId in this.listTabs)) {
+      return;
+    }
+
+    // valid title
+    if ('status' in objChange && objChange.status !== Tab.COMPLETE) {
+      return;
+    }
+
+    let tab = this.listTabs[tabId];
+
+    tab.setTitle(objTab.title);
+    tab.setUrl(objTab.url);
   }
 
   persisteData() {
@@ -62,7 +94,7 @@ class MonitorTabs {
     let data = [];
     let time = moment().unix();
     for (let [key, tab] of Object.entries(this.listTabs)) {
-      data += tab.getTraker();
+      data = data.concat(tab.getTracker());
     }
 
     console.log(this.FLAG, "All trackers:", data);
@@ -70,7 +102,7 @@ class MonitorTabs {
     this.instPersiste.writeData("tracker", data)
       .then(function __thenWriteData() {
         for (let [key, tab] of Object.entries(that.listTabs)) {
-          tab.resetTraker(time);
+          tab.resetTracker(time);
         }
 
         console.log(that.FLAG, "Persiste success.");

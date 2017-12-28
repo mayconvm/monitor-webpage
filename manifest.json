@@ -8,6 +8,7 @@
     "persistent": true,
     "scripts": [
 
+      "js/libs/URI.js",
       "js/libs/firebase.js",
       "js/libs/lodash.min.js",
       "js/libs/moment.js",

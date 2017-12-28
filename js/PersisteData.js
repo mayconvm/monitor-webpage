@@ -5,7 +5,11 @@ class PersisteData {
   constructor() {
     this.db = new Dexie("tracker_database");
     this.db.version(1).stores({
-        tracker: 'time,domain'
+        tracker: 'end,start,url,domain'
+    });
+
+    this.db.open().catch(function(error) {
+      console.error('Uh oh : ' + error);
     });
   }
 
@@ -17,7 +21,7 @@ class PersisteData {
       }
 
       this.db[store]
-      .put(data)
+      .bulkAdd(data)
       .then(resolve)
       .catch(reject);
     });
