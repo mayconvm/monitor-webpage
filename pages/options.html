@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Options App</title>
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<script type="text/javascript" src="./js/jquery-3.2.1.slim.min.js"></script>
+	<script type="text/javascript" src="./js/popper.min.js"></script>
+	<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/libs/dexie.js"></script>
+	<script async type="text/javascript" src="../js/PersisteData.js"></script>
+	<script async type="text/javascript" src="./js/menu/firebase.js"></script>
+	<script async type="text/javascript" src="./js/menu.js"></script>
+	<script async type="text/javascript" src="./js/start.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col"> .</div>
+		</div>
+		<div class="row">
+			<div class="col-2" id="menu">
+				<div class="col"><a href="#menu1" id="menu_option_1">Firebase</a> </div>
+				<div class="col"><a href="#menu2" id="menu_option_2">User</a> </div>
+			</div>
+			<div class="col" id="collection_contents">
+				
+				<div class="menus" id="menu_1">
+					<form>
+						<div class="d-none alert alert-success" id="firebase_alert_success" role="alert">
+						  Data save with success!
+						</div>
+						<div class="d-none alert alert-danger" id="firebase_alert_danger" role="alert">
+						  Ops! Problem to save data!
+						</div>
+
+						<div class="form-group">
+							<label for="input_apiKey">APIKEY</label>
+							<input type="text" class="form-control" id="input_apiKey" aria-describedby="firebase apiKey" placeholder="apiKey">
+						</div>
+
+						<div class="form-group">
+							<label for="input_authDomain">AUTH_DOMAIN</label>
+							<input type="text" class="form-control" id="input_authDomain" placeholder="firebase authDomain">
+						</div>
+
+						<div class="form-group">
+							<label for="input_databaseURL">DATABASE_URL</label>
+							<input type="text" class="form-control" id="input_databaseURL" placeholder="firebase databaseURL">
+						</div>
+
+						<div class="form-group">
+							<label for="input_projectId">PROJECT_ID</label>
+							<input type="text" class="form-control" id="input_projectId" placeholder="firebase projectId">
+						</div>
+
+						<div class="form-group">
+							<label for="input_storageBucket">STORAGE_BUCKET</label>
+							<input type="text" class="form-control" id="input_storageBucket" placeholder="firebase storageBucket">
+						</div>
+
+						<div class="form-group">
+							<label for="input_messagingSenderId">MESSAGING_SENDER_ID</label>
+							<input type="text" class="form-control" id="input_messagingSenderId" placeholder="firebase messagingSenderId">
+						</div>
+
+						<button type="button" id="btn_save_data_firebase" class="btn btn-primary">SAVE</button>
+					</form>
+				</div>
+
+				<div class="d-none menus" id="menu_2">
+					<div id="login_fireabse">
+						<form action="">
+							<div class="alert alert-danger" role="alert">
+							  Ops! Problem to login in Firebase!
+							</div>
+							<div class="form-group">
+								<label for="input_email">EMAIL</label>
+								<input type="email" class="form-control" id="input_email" aria-describedby="Email" placeholder="apiKey">
+							</div>
+
+							<div class="form-group">
+								<label for="input_password">PASSWORD</label>
+								<input type="text" class="form-control" id="input_password" placeholder="password">
+							</div>
+
+							<button type="button" id="btn_login_firebase" class="btn btn-primary">LOGIN</button>
+						</form>
+					</div>
+
+					<div id="logout_firebase">
+						<div class="form-group">
+							<label for="btn_logout">Logout user of firebase</label> <br>
+							<button type="button" id="btn_logout_firebase" class="btn btn-warning">LOGOUT</button>
+						</div>
+					</div>
+				</div>
+			</div>
+	  	</div>
+	</div>
+</body>
+</html>
