@@ -4,6 +4,7 @@
   "name": "Analytics Page",
   "description": "Analytics Page.",
   "version": "0.0.1",
+  "options_page": "pages/options.html",
   "background": {
     "persistent": true,
     "scripts": [
