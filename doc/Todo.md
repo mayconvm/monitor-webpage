@@ -1,7 +1,5 @@
 # Monitor navigation
 
-#TODO
-
 Planing control my life
 
 - Control my traffic in my computer
@@ -16,6 +14,12 @@ Planing control my life
     - Object track tab with time
     - 
 - Search about Kibana with Firebase
+
+# TODO
+    - Popup to options app
+        - Configure firebase
+        - Integration with login firebase
+            - Record token
 
 # Links
     - https://developer.chrome.com/extensions/tabs#event-onActivated
