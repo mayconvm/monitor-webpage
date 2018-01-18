@@ -6,9 +6,13 @@
 	<script type="text/javascript" src="./js/jquery-3.2.1.slim.min.js"></script>
 	<script type="text/javascript" src="./js/popper.min.js"></script>
 	<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/libs/lodash.min.js"></script>
 	<script type="text/javascript" src="../js/libs/dexie.js"></script>
+	<script type="text/javascript" src="../js/libs/firebase.js"></script>
+	<!-- <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script> -->
 	<script async type="text/javascript" src="../js/PersisteData.js"></script>
 	<script async type="text/javascript" src="./js/menu/firebase.js"></script>
+	<script async type="text/javascript" src="./js/menu/user.js"></script>
 	<script async type="text/javascript" src="./js/menu.js"></script>
 	<script async type="text/javascript" src="./js/start.js"></script>
 </head>
@@ -70,15 +74,15 @@
 				<div class="d-none menus" id="menu_2">
 					<div id="login_fireabse">
 						<form action="">
-							<div class="alert alert-danger" role="alert">
-							  Ops! Problem to login in Firebase!
+							<div class="alert alert-danger d-none" id="login_alert_error" role="alert">
+							  Ops! Problem with Firebase!
 							</div>
-							<div class="form-group">
+							<div class="form-group d-none">
 								<label for="input_email">EMAIL</label>
 								<input type="email" class="form-control" id="input_email" aria-describedby="Email" placeholder="apiKey">
 							</div>
 
-							<div class="form-group">
+							<div class="form-group d-none">
 								<label for="input_password">PASSWORD</label>
 								<input type="text" class="form-control" id="input_password" placeholder="password">
 							</div>
@@ -87,7 +91,7 @@
 						</form>
 					</div>
 
-					<div id="logout_firebase">
+					<div id="logout_firebase" class="d-none">
 						<div class="form-group">
 							<label for="btn_logout">Logout user of firebase</label> <br>
 							<button type="button" id="btn_logout_firebase" class="btn btn-warning">LOGOUT</button>

@@ -5,10 +5,16 @@
     "#collection_contents",
   );
 
+  const instPersisteData = new PersisteData();
+
   // start firebase
   const classMenuFirebase = new MenuFirebase(
-    new PersisteData()
+    instPersisteData
   );
+
+
+  // firebase
+
 
 
   // Show data firebase
@@ -54,7 +60,53 @@
 
   });
 
-  function getElement(selector) {
-    return _global.document.querySelector(selector);
-  }
+
+  // firebase
+
+
+  // user
+  const classMenuUser = new MenuUser(instPersisteData);
+
+  getElement("#btn_login_firebase").addEventListener('click', (evt) => {
+    classMenuUser.login().then((result) => {
+      getElement("#logout_firebase").classList.remove("d-none");
+      getElement("#btn_login_firebase").classList.add("d-none");
+    })
+    .catch((error) => {
+
+      getElement("#login_alert_error").classList.remove("d-none");
+      
+      console.error(error);
+    });
+  });
+
+  getElement("#btn_logout_firebase").addEventListener('click', (evt) => {
+    classMenuUser.logout().then(() => {
+      getElement("#logout_firebase").classList.add("d-none");
+      getElement("#btn_login_firebase").classList.remove("d-none");
+    }).catch((erro) => {
+      getElement("#login_alert_error").classList.remove("d-none");
+
+      console.error(erro);
+    })
+  });
+
+  // login all ready do
+  setTimeout(function() {
+    classMenuUser.getData().then((result) => {
+      let user1 = result[0];
+      if (!user1) {
+        return;
+      }
+
+      getElement("#logout_firebase").classList.remove("d-none");
+      getElement("#btn_login_firebase").classList.add("d-none");
+    });
+  }, 1 * 1000);
+
+  // user
 }) (window);
+
+function getElement(selector) {
+  return window.document.querySelector(selector);
+}
