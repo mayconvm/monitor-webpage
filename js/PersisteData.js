@@ -6,7 +6,8 @@ class PersisteData {
     this.db = new Dexie("tracker_database");
     this.db.version(1).stores({
       tracker: 'end,start,url,domain',
-      firebase: 'apiKey,authDomain,databaseURL,projectId,storageBucket,messagingSenderId'
+      firebase: 'apiKey,authDomain,databaseURL,projectId,storageBucket,messagingSenderId',
+      user: 'id,email,token,displayName,photoURL'
     });
 
     this.db.open().catch(function(error) {
@@ -17,7 +18,7 @@ class PersisteData {
   writeData(store, data) {
     return new Promise((resolve, reject) => {
 
-      if (!data.length) {
+      if (_.isEmpty(data)) {
         return reject("Data is empty.");
       }
 
