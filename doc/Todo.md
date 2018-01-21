@@ -7,12 +7,21 @@ Planing control my life
 	- Who many time in each website? - OK
 
 - Loggin in Firebase
-    - Add popup in extension to login
-    - Record token in localstore
+    - Add popup in extension to login - OK
+    - Record token in localstore - OK
 - Send track to Firebase
-    - Object domain
-    - Object track tab with time
+    - Object domain - OK
+    - Object track tab with time - OK
+
+- Panel configuration
+    - How many itens using to reports in App
+    - Whitelist
+    - Blacklist
+
+- Dashboard
+    - Char pizza
     - 
+
 - Search about Kibana with Firebase
 
 # TODO
