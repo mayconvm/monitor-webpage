@@ -2,39 +2,20 @@
 
   class MenuUser {
     constructor(persistData) {
-      this.provider = new firebase.auth.GoogleAuthProvider();
+      this.persistData = persistData;
+      this.provider = new this.persistData.firebase.auth.GoogleAuthProvider();
       this.provider.addScope('email');
 
-      this.persistData = persistData;
 
       this.nameDataBase = "user";
-
-      this.init();
     }
 
-    init() {
-      this.persistData.readData('firebase').then((result) => {
-
-        let data = result[0];
-
-        var config = {
-          apiKey: data.apiKey,
-          authDomain: data.authDomain,
-          databaseURL: data.databaseURL,
-          projectId: data.projectId,
-          storageBucket: data.storageBucket,
-          messagingSenderId: data.messagingSenderId,
-        };
-        firebase.initializeApp(config);
-      })
-
-    }
 
     login() {
       let that = this;
 
       return new Promise((resolve, reject) => {
-        firebase.auth().signInWithPopup(this.provider).then(function(result) {
+        that.persistData.firebase.auth().signInWithPopup(this.provider).then(function(result) {
           let dataSave = {
             id: result.additionalUserInfo.profile.id,
             email: result.additionalUserInfo.profile.email,
@@ -57,7 +38,7 @@
     logout() {
       let that = this;
       return new Promise((resolve, reject) => {
-        firebase.auth().signOut().then(() => {
+        that.persistData.firebase.auth().signOut().then(() => {
           that.persistData.cleanData(that.nameDataBase).then(resolve).catch(reject);
         }).catch(reject);
       });

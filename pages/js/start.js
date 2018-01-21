@@ -5,16 +5,12 @@
     "#collection_contents",
   );
 
-  const instPersistData = new PersistData();
+  const instPersistData = new PersistData(firebase);
 
   // start firebase
   const classMenuFirebase = new MenuFirebase(
     instPersistData
   );
-
-
-  // firebase
-
 
 
   // Show data firebase
