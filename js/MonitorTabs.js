@@ -99,7 +99,11 @@ class MonitorTabs {
 
     console.log(this.FLAG, "All trackers:", data);
 
-    this.instPersiste.writeData("tracker", data)
+    if (!data.length) {
+      return console.info("Data is empty.");
+    }
+
+    this.instPersiste.writeDataFirebase("tracker", data)
       .then(function __thenWriteData() {
         for (let [key, tab] of Object.entries(that.listTabs)) {
           tab.resetTracker(time);
