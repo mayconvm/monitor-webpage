@@ -12,6 +12,7 @@
 
       "js/libs/URI.js",
       "js/libs/firebase.js",
+      "js/libs/firebase-firestore.js",
       "js/libs/lodash.min.js",
       "js/libs/moment.js",
       "js/libs/dexie.js",
