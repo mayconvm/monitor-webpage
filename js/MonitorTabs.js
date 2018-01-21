@@ -89,7 +89,7 @@ class MonitorTabs {
     tab.setUrl(objTab.url);
   }
 
-  persisteData() {
+  persistData() {
     let that = this;
     let data = [];
     let time = moment().unix();

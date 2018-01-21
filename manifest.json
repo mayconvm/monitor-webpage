@@ -17,7 +17,7 @@
       "js/libs/dexie.js",
 
       "js/Track/Tab.js",
-      "js/PersisteData.js",
+      "js/PersistData.js",
       "js/MonitorTabs.js",
 
       "js/background.js"

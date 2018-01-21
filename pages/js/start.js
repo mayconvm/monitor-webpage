@@ -5,11 +5,11 @@
     "#collection_contents",
   );
 
-  const instPersisteData = new PersisteData();
+  const instPersistData = new PersistData();
 
   // start firebase
   const classMenuFirebase = new MenuFirebase(
-    instPersisteData
+    instPersistData
   );
 
 
@@ -65,7 +65,7 @@
 
 
   // user
-  const classMenuUser = new MenuUser(instPersisteData);
+  const classMenuUser = new MenuUser(instPersistData);
 
   getElement("#btn_login_firebase").addEventListener('click', (evt) => {
     classMenuUser.login().then((result) => {

@@ -1,11 +1,11 @@
 (function (_global) {
 
   class MenuUser {
-    constructor(persisteData) {
+    constructor(persistData) {
       this.provider = new firebase.auth.GoogleAuthProvider();
       this.provider.addScope('email');
 
-      this.persisteData = persisteData;
+      this.persistData = persistData;
 
       this.nameDataBase = "user";
 
@@ -13,15 +13,21 @@
     }
 
     init() {
-      var config = {
-        apiKey: "AIzaSyDXRHMSJQdhmUlNVE-jCHY0V9tBskPMFQ0",
-        authDomain: "monitorwebpage-3e3e8.firebaseapp.com",
-        databaseURL: "https://monitorwebpage-3e3e8.firebaseio.com",
-        projectId: "monitorwebpage-3e3e8",
-        storageBucket: "",
-        messagingSenderId: "84138561985"
-      };
-      firebase.initializeApp(config);
+      this.persistData.readData('firebase').then((result) => {
+
+        let data = result[0];
+
+        var config = {
+          apiKey: data.apiKey,
+          authDomain: data.authDomain,
+          databaseURL: data.databaseURL,
+          projectId: data.projectId,
+          storageBucket: data.storageBucket,
+          messagingSenderId: data.messagingSenderId,
+        };
+        firebase.initializeApp(config);
+      })
+
     }
 
     login() {
@@ -52,21 +58,21 @@
       let that = this;
       return new Promise((resolve, reject) => {
         firebase.auth().signOut().then(() => {
-          that.persisteData.cleanData(that.nameDataBase).then(resolve).catch(reject);
+          that.persistData.cleanData(that.nameDataBase).then(resolve).catch(reject);
         }).catch(reject);
       });
     }
 
     getData() {
-      return this.persisteData.readData(this.nameDataBase);
+      return this.persistData.readData(this.nameDataBase);
     }
 
     update(data) {
       let that = this;
-      return this.persisteData.readData(this.nameDataBase, {id: data.id}).then((result) => {
+      return this.persistData.readData(this.nameDataBase, {id: data.id}).then((result) => {
 
         if (_.isEmpty(result)) {
-          return that.persisteData.writeData(that.nameDataBase, [data]);
+          return that.persistData.writeData(that.nameDataBase, [data]);
         }
 
         return result.modify(data);

@@ -1,6 +1,7 @@
 const TAG = "[MONITOR]";
 console.log(TAG);
 
+const persistData = new PersistData();
 
 var config = {
   apiKey: "AIzaSyDXRHMSJQdhmUlNVE-jCHY0V9tBskPMFQ0",
@@ -18,11 +19,11 @@ firebase.initializeApp(config);
 
 
 // start monitoring
-const monitor = new MonitorTabs(true, new PersisteData());
+const monitor = new MonitorTabs(true, persistData);
 
 // backup in IndexDb
 setInterval(function __backupTackers() {
 
-  monitor.persisteData();
+  monitor.persistData();
 
 }, 1000 * 10);

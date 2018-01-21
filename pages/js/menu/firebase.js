@@ -1,8 +1,8 @@
 (function (_global) {
 
   class MenuFirebase {
-    constructor (persisteData) {
-      this.persisteData = persisteData;
+    constructor (persistData) {
+      this.persistData = persistData;
       this.nameDataBase = "firebase";
     }
 
@@ -11,8 +11,8 @@
         return false;
       }
 
-      return this.persisteData.cleanData(this.nameDataBase).then(() => {
-        return this.persisteData.writeData(this.nameDataBase, objForm);
+      return this.persistData.cleanData(this.nameDataBase).then(() => {
+        return this.persistData.writeData(this.nameDataBase, objForm);
       })
       .catch((error) => {
         return Promise.reject(error);
@@ -21,7 +21,7 @@
     }
 
     getData() {
-      return this.persisteData.readData(this.nameDataBase);
+      return this.persistData.readData(this.nameDataBase);
     }
 
     validate(objForm) {
