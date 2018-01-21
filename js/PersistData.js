@@ -1,6 +1,6 @@
 // class to record data in indexDB
 
-class PersisteData {
+class PersistData {
 
   constructor() {
     this.db = new Dexie("tracker_database");
