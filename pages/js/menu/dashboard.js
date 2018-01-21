@@ -40,6 +40,7 @@
                 if (!el) {
                   dataChart.push(
                     {
+                      //icon: "https://" + _item.domain + "/favicon.ico",
                       class: _item.domain,
                       label: _item.domain,
                       times: [
