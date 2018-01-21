@@ -100,6 +100,19 @@
     });
   }, 1 * 1000);
 
+
+  // chart
+  const menuDashboard = new MenuDashBoard(instPersistData);
+
+  let idDiv = "#chart_timeline_general";
+  let elementDom = _global.document.querySelector(idDiv);
+  if (elementDom) elementDom.innerHTML = "Waiting.... load.";
+
+  setTimeout(function() {
+    // time line
+    menuDashboard.charTimeline(idDiv);
+  }, 2 * 1000);
+
   // user
 }) (window);
 

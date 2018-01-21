@@ -10,12 +10,21 @@
 	<script type="text/javascript" src="../js/libs/dexie.js"></script>
 	<script type="text/javascript" src="../js/libs/firebase.js"></script>
 	<script type="text/javascript" src="../js/libs/firebase-firestore.js"></script>
+	<script type="text/javascript" src="../js/libs/d3.3.4.3.min.js"></script>
+	<script type="text/javascript" src="../js/libs/d3-timeline.js"></script>
 	<!-- <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script> -->
 	<script async type="text/javascript" src="../js/PersistData.js"></script>
 	<script async type="text/javascript" src="./js/menu/firebase.js"></script>
 	<script async type="text/javascript" src="./js/menu/user.js"></script>
+	<script async type="text/javascript" src="./js/menu/dashboard.js"></script>
 	<script async type="text/javascript" src="./js/menu.js"></script>
 	<script async type="text/javascript" src="./js/start.js"></script>
+
+	<style>
+		#chart_timeline_general * {
+			font-size: 12px;
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -24,12 +33,13 @@
 		</div>
 		<div class="row">
 			<div class="col-2" id="menu">
+				<div class="col"><a href="#menu3" id="menu_option_3">Dashboard</a> </div>
 				<div class="col"><a href="#menu1" id="menu_option_1">Firebase</a> </div>
 				<div class="col"><a href="#menu2" id="menu_option_2">User</a> </div>
 			</div>
 			<div class="col" id="collection_contents">
 				
-				<div class="menus" id="menu_1">
+				<div class="d-none menus" id="menu_1">
 					<form>
 						<div class="d-none alert alert-success" id="firebase_alert_success" role="alert">
 						  Data save with success!
@@ -97,6 +107,16 @@
 							<label for="btn_logout">Logout user of firebase</label> <br>
 							<button type="button" id="btn_logout_firebase" class="btn btn-warning">LOGOUT</button>
 						</div>
+					</div>
+				</div>
+
+				<div class="menus" id="menu_3">
+					<div>
+						<h1>Timeline</h1>
+					</div>
+
+					<div id="chart_timeline_general">
+						
 					</div>
 				</div>
 			</div>
