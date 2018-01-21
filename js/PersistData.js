@@ -95,6 +95,17 @@ class PersistData {
     })
   }
 
+  getDataFirebase (store, condition, limit = 5000) {
+
+    let find = this.dbFirebase.ref(store);
+
+    if (limit) {
+      find = find.limitToLast(limit);
+    }
+
+    return find.once('value');
+  }
+
   getRandomId(length = 5, split = 1, separator = "-") {
 
     let getRandomHash = function (length) {
